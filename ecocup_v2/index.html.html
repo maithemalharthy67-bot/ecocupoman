@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoCup — Sustainable Bottles, Oman</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo" onclick="showPage('page-home')">
+    <img src="images/logo.png" alt="EcoCup Logo"/>
+    <span>EcoCup</span>
+  </div>
+  <div class="nav-links">
+    <a onclick="showPage('page-home')">Home</a>
+    <a onclick="showPage('page-products')">Products</a>
+    <a onclick="showPage('page-home');setTimeout(()=>document.getElementById('sec-calc')&&document.getElementById('sec-calc').scrollIntoView({behavior:'smooth'}),200)">Impact</a>
+    <a onclick="showPage('page-home');setTimeout(()=>document.getElementById('sec-before-after')&&document.getElementById('sec-before-after').scrollIntoView({behavior:'smooth'}),200)">Impact</a>
+    <a onclick="showPage('page-home');setTimeout(()=>document.getElementById('sec-faq')&&document.getElementById('sec-faq').scrollIntoView({behavior:'smooth'}),200)">FAQ</a>
+    <a onclick="showPage('page-home');setTimeout(()=>document.getElementById('sec-vision')&&document.getElementById('sec-vision').scrollIntoView({behavior:'smooth'}),200)">Vision</a>
+    <a onclick="showPage('page-home');setTimeout(()=>document.getElementById('sec-team')&&document.getElementById('sec-team').scrollIntoView({behavior:'smooth'}),200)">Team</a>
+    <a onclick="showPage('page-home');setTimeout(()=>document.getElementById('sec-b2b')&&document.getElementById('sec-b2b').scrollIntoView({behavior:'smooth'}),200)">Partners</a>
+    <a onclick="showPage('page-home');setTimeout(()=>document.getElementById('sec-contact')&&document.getElementById('sec-contact').scrollIntoView({behavior:'smooth'}),200)">Contact</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <button class="cart-btn" id="cart-nav-btn">
+    &#128722; Cart <span class="cart-badge" id="cart-badge">0</span>
+  </button>
+</nav>
+<div class="toast" id="toast"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a onclick="showPage('page-home');closeMobileMenu()">🏠 Home</a>
+  <a onclick="showPage('page-products');closeMobileMenu()">🛍️ Products</a>
+  <a onclick="showPage('page-home');closeMobileMenu();setTimeout(()=>document.getElementById('sec-calc')&&document.getElementById('sec-calc').scrollIntoView({behavior:'smooth'}),200)">📊 Impact Calculator</a>
+  <a onclick="showPage('page-home');closeMobileMenu();setTimeout(()=>document.getElementById('sec-vision')&&document.getElementById('sec-vision').scrollIntoView({behavior:'smooth'}),200)">🌱 Vision</a>
+  <a onclick="showPage('page-home');closeMobileMenu();setTimeout(()=>document.getElementById('sec-faq')&&document.getElementById('sec-faq').scrollIntoView({behavior:'smooth'}),200)">❓ FAQ</a>
+  <a onclick="showPage('page-home');closeMobileMenu();setTimeout(()=>document.getElementById('sec-team')&&document.getElementById('sec-team').scrollIntoView({behavior:'smooth'}),200)">👥 Team</a>
+  <a onclick="showPage('page-home');closeMobileMenu();setTimeout(()=>document.getElementById('sec-b2b')&&document.getElementById('sec-b2b').scrollIntoView({behavior:'smooth'}),200)">🤝 Partners</a>
+  <a onclick="showPage('page-home');closeMobileMenu();setTimeout(()=>document.getElementById('sec-contact')&&document.getElementById('sec-contact').scrollIntoView({behavior:'smooth'}),200)">✉️ Contact</a>
+</div>
+
+<!-- CART ABANDONMENT HOOK POPUP -->
+<div class="cart-hook-overlay" id="cartHookOverlay" onclick="closeCartHook(event)">
+  <div class="cart-hook-popup">
+    <button class="cart-hook-close" onclick="closeCartHookBtn()">✕</button>
+    <div class="cart-hook-icon">🌱</div>
+    <div class="cart-hook-title">Did you know?</div>
+    <div class="cart-hook-body">This EcoCup bottle will return to earth naturally — compare that to a plastic bottle sitting in a landfill for centuries.</div>
+    <div class="cart-hook-compare">
+      <div class="hook-stat bad">
+        <div class="h-num">450 yrs</div>
+        <div class="h-lbl">Plastic bottle to decompose</div>
+      </div>
+      <div class="hook-stat good">
+        <div class="h-num">~80 days</div>
+        <div class="h-lbl">EcoCup returns to soil</div>
+      </div>
+    </div>
+    <button class="cart-hook-cta" onclick="closeCartHookBtn();showPage('page-cart');">View My Cart 🛒</button>
+  </div>
+</div>
+
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div>
+      <span class="hero-tag">Sustainable &middot; Biodegradable &middot; Oman</span>
+      <h1>Bottles made from nature, not plastic.</h1>
+      <p>EcoCup offers sustainable packaging made from plant-based and recycled materials &mdash; a real alternative to single-use plastic, starting in Oman.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('page-products')">Shop the Collection</button>
+        <button class="btn-secondary" onclick="document.getElementById('sec-calc').scrollIntoView({behavior:'smooth'})">Calculate Your Impact</button>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="images/hero/hero-bottle.png" alt="EcoCup 800ml Recycle and Return Bottle" style="object-fit:contain;background:#fff;"/>
+    </div>
+  </section>
+
+  <section class="site-section">
+    <div class="section-label">Why EcoCup</div>
+    <div class="section-title">Good for you. Better for the planet.</div>
+    <p class="section-sub">Our bottles are built from natural, biodegradable materials with zero plastic.</p>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">&#9851;</div><h3>Fully biodegradable</h3><p>Breaks down naturally &mdash; no microplastics, no landfill guilt.</p></div>
+      <div class="feature-card"><div class="feature-icon">&#127807;</div><h3>Natural materials</h3><p>Made from recycled paper and palm fibers sourced responsibly.</p></div>
+      <div class="feature-card"><div class="feature-icon">&#128683;</div><h3>Plastic-free</h3><p>100% plastic-free alternative &mdash; inside and out.</p></div>
+      <div class="feature-card"><div class="feature-icon">&#128166;</div><h3>Water resistant</h3><p>Natural eco-coating keeps the bottle sturdy and leak-proof.</p></div>
+      <div class="feature-card"><div class="feature-icon">&#127970;</div><h3>Business ready</h3><p>Ideal for brands, events, and organizations.</p></div>
+    </div>
+  </section>
+
+  <section class="site-section" id="sec-calc" style="text-align:center;background:#f7f7f5;">
+    <div class="section-label">Plastic Impact Calculator</div>
+    <div class="section-title">How much plastic do you save?</div>
+    <p class="section-sub" style="margin:0 auto;">Every EcoCup replaces a plastic bottle.</p>
+    <div class="calc-box">
+      <div class="calc-row"><label>Bottles per month</label><input type="range" min="1" max="200" value="30" id="monthly" step="1" oninput="updateCalc()"><span class="calc-val" id="monthly-val">30</span></div>
+      <div class="calc-row"><label>Years of use</label><input type="range" min="1" max="10" value="2" id="years" step="1" oninput="updateCalc()"><span class="calc-val" id="years-val">2</span></div>
+      <div class="calc-result">
+        <div class="calc-stat"><div class="num" id="bottles-saved">720</div><div class="lbl">Plastic bottles saved</div></div>
+        <div class="calc-stat"><div class="num" id="kg-saved">14.4 kg</div><div class="lbl">Plastic waste avoided</div></div>
+      </div>
+    </div>
+
+    <!-- OMAN IMPACT VISUALIZER -->
+    <div class="impact-toggle">
+      <button class="impact-tab active" id="tab-wadis" onclick="setImpactTab('wadis')">🏞️ Wadi Water Bottles</button>
+      <button class="impact-tab" id="tab-turtle" onclick="setImpactTab('turtle')">🐢 Green Turtle Hatchlings</button>
+    </div>
+    <div class="impact-visual-box" id="impact-visual-box">
+      <div class="impact-icon-group" id="impact-icon-group">
+        <div class="impact-emoji-row" id="impact-emojis"></div>
+        <div class="impact-desc" id="impact-desc"></div>
+        <div class="impact-sub" id="impact-sub"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- BEFORE & AFTER SLIDER SECTION -->
+  <section class="ba-section" id="sec-before-after">
+    <div class="ba-top">
+      <div class="section-label" style="text-align:center;">See the difference</div>
+      <h2 class="ba-heading">Before &amp; After EcoCup</h2>
+      <p class="ba-sub">Drag the slider to see what happens when the world chooses EcoCup over plastic.</p>
+    </div>
+
+    <div class="ba-wrapper">
+      <!-- LABELS -->
+      <div class="ba-label ba-label-left">
+        <span class="ba-label-icon">&#128684;</span>
+        <span>Without EcoCup</span>
+      </div>
+      <div class="ba-label ba-label-right">
+        <span>With EcoCup</span>
+        <span class="ba-label-icon">&#127807;</span>
+      </div>
+
+      <!-- SLIDER CONTAINER -->
+      <div class="ba-container" id="baContainer">
+
+        <!-- BEFORE side (plastic pollution) -->
+        <div class="ba-before">
+          <div class="ba-before-visual">
+            <!-- Plastic bottles pile SVG illustration -->
+            <svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <!-- Sky / background -->
+              <rect width="700" height="420" fill="#c8d8e8"/>
+              <!-- Clouds -->
+              <ellipse cx="120" cy="60" rx="60" ry="25" fill="#b0c4d4" opacity="0.6"/>
+              <ellipse cx="150" cy="50" rx="45" ry="22" fill="#b8ccd8" opacity="0.7"/>
+              <ellipse cx="580" cy="80" rx="55" ry="22" fill="#b0c4d4" opacity="0.5"/>
+              <!-- Ground -->
+              <rect x="0" y="300" width="700" height="120" fill="#8a7560"/>
+              <rect x="0" y="295" width="700" height="18" fill="#7a6550"/>
+              <!-- Dirty puddles -->
+              <ellipse cx="150" cy="320" rx="80" ry="12" fill="#6a5540" opacity="0.5"/>
+              <ellipse cx="500" cy="340" rx="60" ry="10" fill="#6a5540" opacity="0.4"/>
+              <!-- Plastic bottles scattered - various positions -->
+              <!-- Row 1 bottles -->
+              <g transform="translate(60,200) rotate(-15)">
+                <rect x="0" y="0" width="28" height="70" rx="8" fill="#88ccff" opacity="0.85"/>
+                <rect x="6" y="-8" width="16" height="14" rx="3" fill="#55aaee"/>
+                <rect x="3" y="20" width="22" height="20" rx="2" fill="#aaddff" opacity="0.5"/>
+              </g>
+              <g transform="translate(110,220) rotate(10)">
+                <rect x="0" y="0" width="24" height="60" rx="7" fill="#ffcc88" opacity="0.85"/>
+                <rect x="5" y="-7" width="14" height="12" rx="3" fill="#ffaa44"/>
+                <rect x="3" y="18" width="18" height="16" rx="2" fill="#ffddaa" opacity="0.5"/>
+              </g>
+              <g transform="translate(160,195) rotate(-5)">
+                <rect x="0" y="0" width="26" height="65" rx="7" fill="#88ff99" opacity="0.85"/>
+                <rect x="5" y="-7" width="16" height="13" rx="3" fill="#44cc55"/>
+                <rect x="3" y="18" width="20" height="18" rx="2" fill="#aaffbb" opacity="0.5"/>
+              </g>
+              <g transform="translate(210,210) rotate(20)">
+                <rect x="0" y="0" width="22" height="55" rx="6" fill="#ff8888" opacity="0.85"/>
+                <rect x="4" y="-6" width="14" height="11" rx="3" fill="#ee4444"/>
+              </g>
+              <g transform="translate(260,200) rotate(-12)">
+                <rect x="0" y="0" width="28" height="68" rx="8" fill="#cc88ff" opacity="0.85"/>
+                <rect x="6" y="-8" width="16" height="14" rx="3" fill="#aa44ee"/>
+                <rect x="3" y="20" width="22" height="20" rx="2" fill="#ddaaff" opacity="0.5"/>
+              </g>
+              <!-- Row 2 bottles (lower, partially buried) -->
+              <g transform="translate(40,255) rotate(5)">
+                <rect x="0" y="0" width="30" height="75" rx="9" fill="#88ccff" opacity="0.7"/>
+                <rect x="6" y="-9" width="18" height="15" rx="3" fill="#55aaee"/>
+              </g>
+              <g transform="translate(90,248) rotate(-18)">
+                <rect x="0" y="0" width="25" height="62" rx="7" fill="#ffee88" opacity="0.8"/>
+                <rect x="5" y="-7" width="15" height="13" rx="3" fill="#ddcc44"/>
+              </g>
+              <g transform="translate(145,252) rotate(8)">
+                <rect x="0" y="0" width="27" height="66" rx="8" fill="#ff9988" opacity="0.8"/>
+                <rect x="5" y="-8" width="17" height="14" rx="3" fill="#ee5544"/>
+              </g>
+              <g transform="translate(195,245) rotate(-8)">
+                <rect x="0" y="0" width="24" height="58" rx="7" fill="#88ffee" opacity="0.75"/>
+                <rect x="5" y="-7" width="14" height="12" rx="3" fill="#33ccbb"/>
+              </g>
+              <g transform="translate(240,250) rotate(15)">
+                <rect x="0" y="0" width="26" height="64" rx="8" fill="#ffbb88" opacity="0.8"/>
+                <rect x="5" y="-8" width="16" height="13" rx="3" fill="#ee8833"/>
+              </g>
+              <g transform="translate(285,244) rotate(-10)">
+                <rect x="0" y="0" width="22" height="54" rx="6" fill="#bbff88" opacity="0.75"/>
+                <rect x="4" y="-6" width="14" height="11" rx="3" fill="#77ee33"/>
+              </g>
+              <!-- Scattered caps and labels -->
+              <ellipse cx="130" cy="310" rx="12" ry="5" fill="#ee4444" opacity="0.6" transform="rotate(-20,130,310)"/>
+              <ellipse cx="220" cy="305" rx="10" ry="4" fill="#4488ff" opacity="0.6" transform="rotate(15,220,305)"/>
+              <ellipse cx="80" cy="315" rx="9" ry="4" fill="#44cc55" opacity="0.6"/>
+              <rect x="170" y="308" width="18" height="6" rx="2" fill="#ffcc00" opacity="0.5" transform="rotate(10,179,311)"/>
+              <!-- Smog/haze overlay -->
+              <rect x="0" y="140" width="700" height="100" fill="#c8d0c0" opacity="0.25"/>
+              <!-- Warning text overlay -->
+              <text x="350" y="140" text-anchor="middle" font-size="13" fill="#cc3333" font-family="sans-serif" opacity="0.7">450 years to decompose</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- AFTER side (nature / EcoCup decomposed) -->
+        <div class="ba-after">
+          <div class="ba-after-visual">
+            <svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <!-- Sky gradient -->
+              <defs>
+                <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#87ceeb"/>
+                  <stop offset="100%" stop-color="#c8efc8"/>
+                </linearGradient>
+              </defs>
+              <rect width="700" height="420" fill="url(#skyG)"/>
+              <!-- Sun -->
+              <circle cx="580" cy="70" r="38" fill="#ffe066" opacity="0.9"/>
+              <circle cx="580" cy="70" r="48" fill="#ffe066" opacity="0.2"/>
+              <!-- Clouds -->
+              <ellipse cx="120" cy="60" rx="65" ry="28" fill="#fff" opacity="0.75"/>
+              <ellipse cx="155" cy="50" rx="48" ry="22" fill="#fff" opacity="0.8"/>
+              <ellipse cx="400" cy="90" rx="50" ry="20" fill="#fff" opacity="0.6"/>
+              <!-- Rich ground -->
+              <rect x="0" y="300" width="700" height="120" fill="#5a3e1b"/>
+              <rect x="0" y="292" width="700" height="20" fill="#6b4c22"/>
+              <!-- Grass layer -->
+              <rect x="0" y="280" width="700" height="22" fill="#4a8c2a"/>
+              <!-- Soil texture bumps -->
+              <ellipse cx="100" cy="300" rx="40" ry="8" fill="#6b4c22" opacity="0.5"/>
+              <ellipse cx="300" cy="308" rx="50" ry="9" fill="#7a5a2a" opacity="0.4"/>
+              <ellipse cx="550" cy="302" rx="45" ry="8" fill="#6b4c22" opacity="0.45"/>
+              <!-- Grass blades -->
+              <g fill="#2d7a1a">
+                <path d="M30 280 Q33 258 36 280" stroke="#2d7a1a" stroke-width="2" fill="none"/>
+                <path d="M50 280 Q53 252 56 280" stroke="#3a8a22" stroke-width="2" fill="none"/>
+                <path d="M70 280 Q72 260 75 280" stroke="#2d7a1a" stroke-width="2" fill="none"/>
+                <path d="M110 280 Q113 255 116 280" stroke="#3a8a22" stroke-width="2.5" fill="none"/>
+                <path d="M130 280 Q132 264 135 280" stroke="#2d7a1a" stroke-width="1.5" fill="none"/>
+                <path d="M180 280 Q184 250 188 280" stroke="#3a8a22" stroke-width="2" fill="none"/>
+                <path d="M220 280 Q223 258 226 280" stroke="#2d7a1a" stroke-width="2" fill="none"/>
+                <path d="M260 280 Q264 252 268 280" stroke="#3a8a22" stroke-width="2.5" fill="none"/>
+                <path d="M310 280 Q313 260 316 280" stroke="#2d7a1a" stroke-width="2" fill="none"/>
+                <path d="M360 280 Q364 254 368 280" stroke="#3a8a22" stroke-width="2" fill="none"/>
+                <path d="M420 280 Q423 257 426 280" stroke="#2d7a1a" stroke-width="2.5" fill="none"/>
+                <path d="M470 280 Q473 262 476 280" stroke="#3a8a22" stroke-width="2" fill="none"/>
+                <path d="M530 280 Q534 253 538 280" stroke="#2d7a1a" stroke-width="2" fill="none"/>
+                <path d="M580 280 Q583 258 586 280" stroke="#3a8a22" stroke-width="2.5" fill="none"/>
+                <path d="M630 280 Q633 260 636 280" stroke="#2d7a1a" stroke-width="2" fill="none"/>
+                <path d="M670 280 Q672 256 675 280" stroke="#3a8a22" stroke-width="2" fill="none"/>
+              </g>
+              <!-- Big tree left -->
+              <rect x="88" y="160" width="18" height="125" rx="5" fill="#5a3e1b"/>
+              <ellipse cx="97" cy="150" rx="55" ry="65" fill="#2d7a1a"/>
+              <ellipse cx="75" cy="170" rx="35" ry="45" fill="#3a8a22"/>
+              <ellipse cx="118" cy="165" rx="38" ry="48" fill="#368020"/>
+              <ellipse cx="97" cy="130" rx="40" ry="38" fill="#44992a"/>
+              <!-- Flowers -->
+              <circle cx="160" cy="278" r="7" fill="#ff6699"/>
+              <circle cx="160" cy="278" r="3" fill="#ffee44"/>
+              <circle cx="200" cy="275" r="6" fill="#ff9944"/>
+              <circle cx="200" cy="275" r="2.5" fill="#ffee44"/>
+              <circle cx="280" cy="277" r="7" fill="#ff66cc"/>
+              <circle cx="280" cy="277" r="3" fill="#fff"/>
+              <circle cx="350" cy="274" r="5" fill="#ffdd44"/>
+              <circle cx="350" cy="274" r="2" fill="#fff"/>
+              <circle cx="450" cy="276" r="6" fill="#ff4488"/>
+              <circle cx="450" cy="276" r="2.5" fill="#ffee44"/>
+              <circle cx="520" cy="275" r="7" fill="#cc44ff"/>
+              <circle cx="520" cy="275" r="3" fill="#fff"/>
+              <circle cx="600" cy="277" r="6" fill="#ff6644"/>
+              <circle cx="600" cy="277" r="2.5" fill="#ffee44"/>
+              <!-- Small plant sprouting (decomposed EcoCup) -->
+              <rect x="318" y="248" width="8" height="35" rx="3" fill="#4a7a1a"/>
+              <ellipse cx="322" cy="242" rx="18" ry="12" fill="#55aa22" transform="rotate(-20,322,242)"/>
+              <ellipse cx="330" cy="250" rx="14" ry="10" fill="#44991a" transform="rotate(15,330,250)"/>
+              <!-- EcoCup decomposing in soil -->
+              <ellipse cx="320" cy="298" rx="22" ry="8" fill="#8B6914" opacity="0.6"/>
+              <text x="322" y="296" text-anchor="middle" font-size="7" fill="#c8a050" font-family="sans-serif" opacity="0.8">EcoCup</text>
+              <!-- Butterfly -->
+              <g transform="translate(420,200)">
+                <ellipse cx="0" cy="0" rx="18" ry="10" fill="#ff88cc" opacity="0.8" transform="rotate(-30)"/>
+                <ellipse cx="0" cy="0" rx="18" ry="10" fill="#ffaadd" opacity="0.8" transform="rotate(30) scale(-1,1)"/>
+                <ellipse cx="0" cy="0" rx="12" ry="7" fill="#ff66bb" opacity="0.6" transform="rotate(150)"/>
+                <ellipse cx="0" cy="0" rx="12" ry="7" fill="#ff88cc" opacity="0.6" transform="rotate(210) scale(-1,1)"/>
+                <line x1="0" y1="-5" x2="-8" y2="-18" stroke="#333" stroke-width="1"/>
+                <line x1="0" y1="-5" x2="8" y2="-18" stroke="#333" stroke-width="1"/>
+              </g>
+              <!-- Bird -->
+              <path d="M500 100 Q510 93 520 100 Q510 97 500 100" fill="none" stroke="#334" stroke-width="1.5"/>
+              <path d="M530 110 Q540 103 550 110 Q540 107 530 110" fill="none" stroke="#334" stroke-width="1.5"/>
+              <!-- Clean air text -->
+              <text x="350" y="140" text-anchor="middle" font-size="13" fill="#2d7a1a" font-family="sans-serif" opacity="0.75">Returns to earth naturally</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- DRAG HANDLE -->
+        <div class="ba-handle" id="baHandle">
+          <div class="ba-handle-line"></div>
+          <div class="ba-handle-circle">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M7 11l-4 0M7 11l-3-3M7 11l-3 3" stroke="#3B6D11" stroke-width="2" stroke-linecap="round"/>
+              <path d="M15 11l4 0M15 11l3-3M15 11l3 3" stroke="#3B6D11" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="ba-handle-line"></div>
+        </div>
+
+      </div><!-- end ba-container -->
+
+      <!-- BOTTOM CAPTION -->
+      <div class="ba-caption">
+        <div class="ba-cap-item ba-cap-left">
+          <span class="ba-cap-dot" style="background:#cc3333;"></span>
+          Plastic bottle takes <strong>450 years</strong> to decompose — releasing toxins into soil &amp; water
+        </div>
+        <div class="ba-cap-item ba-cap-right">
+          <span class="ba-cap-dot" style="background:#3B6D11;"></span>
+          EcoCup breaks down naturally — enriching soil and <strong>growing new life</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark-section">
+    <div class="section-label" style="color:#97C459;">Did you know?</div>
+    <div class="section-title" style="color:#EAF3DE;">The plastic problem in numbers</div>
+    <p class="section-sub" style="color:#97C459;">Plastic pollution is a global crisis &mdash; and Oman can lead the change.</p>
+    <div class="dyk-grid">
+      <div class="dyk-card"><span class="big">1M+</span><p>Plastic bottles used every minute around the world.</p></div>
+      <div class="dyk-card"><span class="big">450 yrs</span><p>Time for a plastic bottle to decompose in nature.</p></div>
+      <div class="dyk-card"><span class="big">91%</span><p>Of plastic is never recycled &mdash; ends up in landfill or oceans.</p></div>
+    </div>
+  </section>
+
+  <section class="site-section process-bg">
+    <div class="section-label">How it&apos;s made</div>
+    <div class="section-title">From nature to your hands</div>
+    <p class="section-sub">Five clean steps &mdash; no plastic, no compromise.</p>
+    <div class="process-steps-grid">
+      <div class="proc-card">
+        <div class="proc-img-wrap"><img src="images/process/step1-materials.jpg" alt="Step 1 - Material Collection"/></div>
+        <div class="proc-info"><div class="proc-num">01</div><h4>Material Collection</h4><p>We collect plant-based materials such as recycled paper and palm fibers from sustainable sources.</p></div>
+      </div>
+      <div class="proc-card">
+        <div class="proc-img-wrap"><img src="images/process/step2-cleaning.jpg" alt="Step 2 - Fiber Cleaning"/></div>
+        <div class="proc-info"><div class="proc-num">02</div><h4>Fiber Cleaning &amp; Prep</h4><p>Separation and washing of individual paper and plant fibers to ensure uniform quality and safety.</p></div>
+      </div>
+      <div class="proc-card">
+        <div class="proc-img-wrap"><img src="images/process/step3-blending.jpg" alt="Step 3 - Blending"/></div>
+        <div class="proc-info"><div class="proc-num">03</div><h4>Fiber &amp; Material Blending</h4><p>Paper fibers are blended with palm fronds and coir into a homogeneous mixture for specialized material creation.</p></div>
+      </div>
+      <div class="proc-card">
+        <div class="proc-img-wrap"><img src="images/process/step4-mold.png" alt="Step 4 - Mold and Press"/></div>
+        <div class="proc-info"><div class="proc-num">04</div><h4>Mold &amp; Press</h4><p>The blended material is molded into durable EcoCup shapes under precise heat and pressure, then treated with eco-coating for water resistance.</p></div>
+      </div>
+      <div class="proc-card">
+        <div class="proc-img-wrap"><img src="images/process/step5-final.png" alt="Step 5 - Final Product"/></div>
+        <div class="proc-info"><div class="proc-num">05</div><h4>Final Product</h4><p>Ready-to-use sustainable packaging — inspected, branded, and carefully packed for delivery.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="site-section">
+    <div class="section-label">Sustainability Goals</div>
+    <div class="section-title">We support the UN SDGs</div>
+    <p class="section-sub">EcoCup is built around three key global sustainability goals.</p>
+    <div class="sdg-grid">
+      <div class="sdg-card blue"><div class="sdg-num">SDG 6</div><h4>Clean Water &amp; Sanitation</h4><p>We improve sustainable water packaging, reducing plastic contamination.</p></div>
+      <div class="sdg-card amber"><div class="sdg-num">SDG 12</div><h4>Responsible Consumption</h4><p>We reduce plastic use and support a circular economy.</p></div>
+      <div class="sdg-card green"><div class="sdg-num">SDG 13</div><h4>Climate Action</h4><p>Reducing plastic production lowers greenhouse gas emissions.</p></div>
+    </div>
+  </section>
+
+
+  <!-- VISION & MISSION SECTION -->
+  <section class="vm-section" id="sec-vision">
+    <div class="vm-top">
+      <div class="vm-intro anim-vm">
+        <div class="section-label">Who we are</div>
+        <h2 class="vm-heading">Vision &amp; Mission</h2>
+        <p class="vm-sub">EcoCup is built on a belief that small everyday choices can reshape our planet. Here is what drives us forward.</p>
+        <div class="vm-leaf-row">
+          <span class="vm-leaf">&#127807;</span>
+          <span class="vm-leaf">&#9851;</span>
+          <span class="vm-leaf">&#127758;</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="vm-grid">
+      <!-- VISION COLUMN -->
+      <div class="vm-col vision-col">
+        <div class="vm-col-header">
+          <div class="vm-col-icon vision-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1.5"/><circle cx="16" cy="16" r="6" fill="#3B6D11"/><circle cx="16" cy="16" r="3" fill="#EAF3DE"/><path d="M16 4v4M16 24v4M4 16h4M24 16h4" stroke="#3B6D11" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="vm-col-title">Our Vision</h3>
+        </div>
+        <div class="vm-cards-list">
+          <div class="vm-card vm-card-vision anim-vm" style="animation-delay:0.1s">
+            <div class="vm-card-num">01</div>
+            <p>Promote a sustainable consumption culture where everyday practices reduce environmental impact through reuse and responsible decision-making.</p>
+          </div>
+          <div class="vm-card vm-card-vision anim-vm" style="animation-delay:0.2s">
+            <div class="vm-card-num">02</div>
+            <p>Build a society where resources are efficiently used, waste is minimized, and environmental responsibility is embedded in daily life.</p>
+          </div>
+          <div class="vm-card vm-card-vision anim-vm" style="animation-delay:0.3s">
+            <div class="vm-card-num">03</div>
+            <p>Enable a regenerative system where technology empowers users to live within ecological limits while supporting environmental and social well-being.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="vm-divider">
+        <div class="vm-divider-line"></div>
+        <div class="vm-divider-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#EAF3DE" stroke="#97C459" stroke-width="1.5"/><path d="M24 14v6M24 28v6M14 24h6M28 24h6" stroke="#3B6D11" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="4" fill="#3B6D11"/></svg>
+        </div>
+        <div class="vm-divider-line"></div>
+      </div>
+
+      <!-- MISSION COLUMN -->
+      <div class="vm-col mission-col">
+        <div class="vm-col-header">
+          <div class="vm-col-icon mission-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.5"/><path d="M10 16l4 4 8-8" stroke="#185FA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="vm-col-title">Our Mission</h3>
+        </div>
+        <div class="vm-cards-list">
+          <div class="vm-card vm-card-mission anim-vm" style="animation-delay:0.15s">
+            <div class="vm-card-num">01</div>
+            <p>Encourage the adoption of reusable alternatives by increasing awareness and supporting positive behavioral change toward waste reduction.</p>
+          </div>
+          <div class="vm-card vm-card-mission anim-vm" style="animation-delay:0.25s">
+            <div class="vm-card-num">02</div>
+            <p>Support sustainability through education, awareness, and behavioral interventions that foster long-term responsible consumption.</p>
+          </div>
+          <div class="vm-card vm-card-mission anim-vm" style="animation-delay:0.35s">
+            <div class="vm-card-num">03</div>
+            <p>Develop user-centered tools that reduce reliance on single-use products and promote circular economy practices through engagement and awareness.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM STATS BAR -->
+    <div class="vm-stats">
+      <div class="vm-stat anim-vm" style="animation-delay:0.1s">
+        <div class="vm-stat-num" data-target="91">0</div>
+        <div class="vm-stat-unit">%</div>
+        <div class="vm-stat-label">Plastic never recycled</div>
+      </div>
+      <div class="vm-stat-div"></div>
+      <div class="vm-stat anim-vm" style="animation-delay:0.2s">
+        <div class="vm-stat-num" data-target="450">0</div>
+        <div class="vm-stat-unit">yrs</div>
+        <div class="vm-stat-label">Plastic takes to decompose</div>
+      </div>
+      <div class="vm-stat-div"></div>
+      <div class="vm-stat anim-vm" style="animation-delay:0.3s">
+        <div class="vm-stat-num" data-target="3">0</div>
+        <div class="vm-stat-unit">pillars</div>
+        <div class="vm-stat-label">Return · Refill · Recycle</div>
+      </div>
+      <div class="vm-stat-div"></div>
+      <div class="vm-stat anim-vm" style="animation-delay:0.4s">
+        <div class="vm-stat-num" data-target="100">0</div>
+        <div class="vm-stat-unit">%</div>
+        <div class="vm-stat-label">Plastic-free materials</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TEAM VISION SECTION -->
+  <section class="team-section" id="sec-team">
+    <div class="team-top">
+      <div class="section-label" style="text-align:center;">Our Founders</div>
+      <h2 class="team-heading">Words from Our Team</h2>
+      <p class="team-sub">The four minds behind EcoCup — united by one mission, each with a unique vision for a greener tomorrow.</p>
+    </div>
+
+    <div class="team-grid">
+
+      <!-- CEO 1 -->
+      <div class="ceo-card anim-team" style="animation-delay:0.1s">
+        <div class="ceo-card-inner">
+          <div class="ceo-quote-mark">&ldquo;</div>
+          <p class="ceo-quote">EcoCup is not just a product — it is a movement. Every bottle we replace with a sustainable alternative is a step toward the future we owe our children. Oman can and will lead this change.</p>
+          <div class="ceo-divider"></div>
+          <div class="ceo-footer">
+            <div class="ceo-avatar" style="background:#EAF3DE;color:#3B6D11;">KA</div>
+            <div>
+              <div class="ceo-name">Khalil AlHasni</div>
+              <div class="ceo-title">Co-Founder &amp; CEO</div>
+            </div>
+          </div>
+        </div>
+        <div class="ceo-accent" style="background:#3B6D11;"></div>
+      </div>
+
+      <!-- CEO 2 -->
+      <div class="ceo-card anim-team" style="animation-delay:0.2s">
+        <div class="ceo-card-inner">
+          <div class="ceo-quote-mark">&ldquo;</div>
+          <p class="ceo-quote">I believe that innovation and sustainability go hand in hand. EcoCup proves that we do not have to choose between convenience and responsibility — we can have both, naturally.</p>
+          <div class="ceo-divider"></div>
+          <div class="ceo-footer">
+            <div class="ceo-avatar" style="background:#E6F1FB;color:#185FA5;">ME</div>
+            <div>
+              <div class="ceo-name">Mohammed Elsmani</div>
+              <div class="ceo-title">Co-Founder &amp; CEO</div>
+            </div>
+          </div>
+        </div>
+        <div class="ceo-accent" style="background:#185FA5;"></div>
+      </div>
+
+      <!-- CEO 3 -->
+      <div class="ceo-card anim-team" style="animation-delay:0.3s">
+        <div class="ceo-card-inner">
+          <div class="ceo-quote-mark">&ldquo;</div>
+          <p class="ceo-quote">The circular economy is not a concept of the future — it is a necessity of today. EcoCup was built to close the loop, turning every returned bottle into a new beginning for our planet.</p>
+          <div class="ceo-divider"></div>
+          <div class="ceo-footer">
+            <div class="ceo-avatar" style="background:#FAEEDA;color:#854F0B;">BA</div>
+            <div>
+              <div class="ceo-name">Basil Ali</div>
+              <div class="ceo-title">Co-Founder &amp; CEO</div>
+            </div>
+          </div>
+        </div>
+        <div class="ceo-accent" style="background:#854F0B;"></div>
+      </div>
+
+      <!-- CEO 4 -->
+      <div class="ceo-card anim-team" style="animation-delay:0.4s">
+        <div class="ceo-card-inner">
+          <div class="ceo-quote-mark">&ldquo;</div>
+          <p class="ceo-quote">Small habits create massive change. When people choose EcoCup, they are not just buying a bottle — they are joining a community that values the earth and takes responsibility for it every single day.</p>
+          <div class="ceo-divider"></div>
+          <div class="ceo-footer">
+            <div class="ceo-avatar" style="background:#E1F5EE;color:#0F6E56;">YA</div>
+            <div>
+              <div class="ceo-name">Yazan Alharthi</div>
+              <div class="ceo-title">Co-Founder &amp; CEO</div>
+            </div>
+          </div>
+        </div>
+        <div class="ceo-accent" style="background:#0F6E56;"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section" id="sec-faq">
+    <div class="section-label" style="text-align:center;">Got Questions?</div>
+    <div class="section-title" style="text-align:center;">Frequently Asked Questions</div>
+    <p class="section-sub" style="text-align:center;margin:0 auto;">Everything you need to know about EcoCup — swipe or use the arrows to browse.</p>
+
+    <div class="faq-slider-wrap">
+      <div class="faq-track-outer">
+        <div class="faq-track" id="faqTrack">
+
+          <!-- Q1: Materials -->
+          <div class="faq-card">
+            <div class="faq-card-inner">
+              <div class="faq-card-icon" style="background:#EAF3DE;">🌿</div>
+              <div class="faq-card-cat">Materials &amp; Ingredients</div>
+              <div class="faq-card-q">What exactly is the bottle made of?</div>
+              <div class="faq-card-a">
+                EcoCup bottles are made from <strong>100% natural, plant-based materials</strong> — primarily compressed <strong>palm fibre</strong> sourced from date palm fronds, blended with <strong>dried plant leaves</strong> and recycled paper pulp. These materials are pressed under heat into a durable bottle shape, then finished with a natural eco-coating for water resistance. No plastic, no synthetic chemicals — just nature.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q2: Taste -->
+          <div class="faq-card">
+            <div class="faq-card-inner">
+              <div class="faq-card-icon" style="background:#E6F1FB;">💧</div>
+              <div class="faq-card-cat">Water Quality &amp; Taste</div>
+              <div class="faq-card-q">Does the bottle leave any taste in the water? Does it taste like paper or cardboard?</div>
+              <div class="faq-card-a">
+                No — EcoCup bottles are designed with a <strong>food-safe inner eco-coating</strong> that creates a neutral barrier between the water and the natural materials. The water tastes completely clean. The coating is derived from plant-based waxes, so there is no papery or earthy flavour. Multiple taste tests in Oman confirmed <strong>zero detectable aftertaste</strong>.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q3: Disposal -->
+          <div class="faq-card">
+            <div class="faq-card-inner">
+              <div class="faq-card-icon" style="background:#FAEEDA;">🌱</div>
+              <div class="faq-card-cat">Disposal &amp; Composting</div>
+              <div class="faq-card-q">How do I properly dispose of the Nature Return bottle? Can I just bury it in my garden?</div>
+              <div class="faq-card-a">
+                Yes! The simplest way is to <strong>bury it in soil</strong> — your garden, a plant pot, or any agricultural land. The palm fibre and plant-leaf materials naturally break down and actually <strong>enrich the soil</strong> as they decompose. You can also place it in a compost bin or simply leave it in moist earth. The eco-coating is fully biodegradable. No special steps needed — nature does the rest.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q4: Decomposition time -->
+          <div class="faq-card">
+            <div class="faq-card-inner">
+              <div class="faq-card-icon" style="background:#EAF3DE;">⏱️</div>
+              <div class="faq-card-cat">Environment &amp; Climate</div>
+              <div class="faq-card-q">How long does it take to decompose in Omani soil and climate?</div>
+              <div class="faq-card-a">
+                In Oman's warm, arid climate the process is remarkably fast. Under typical conditions — buried in moist soil or a garden — an EcoCup Nature Return bottle fully decomposes in <strong>approximately 60–90 days</strong>. The heat and microbial activity in Omani soil accelerate the breakdown significantly. By contrast, a standard plastic bottle takes <strong>over 450 years</strong> and never truly disappears — it just becomes microplastics.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q5: Delivery -->
+          <div class="faq-card">
+            <div class="faq-card-inner">
+              <div class="faq-card-icon" style="background:#E6F1FB;">🚚</div>
+              <div class="faq-card-cat">Delivery &amp; Shipping</div>
+              <div class="faq-card-q">Do you deliver to all governorates in Oman?</div>
+              <div class="faq-card-a">
+                <strong>Yes — we deliver across all governorates in Oman</strong>, including Muscat, Dhofar, Al Batinah, Ad Dakhiliyah, Ash Sharqiyah, Al Buraymi, Musandam, and Al Wusta. We work with trusted <strong>local postal offices and logistics partners</strong> to ensure your EcoCup order reaches you wherever you are in the Sultanate. Delivery typically takes 3–5 business days.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q6: Custom logo -->
+          <div class="faq-card">
+            <div class="faq-card-inner">
+              <div class="faq-card-icon" style="background:#FAEEDA;">🏢</div>
+              <div class="faq-card-cat">Business &amp; Customisation</div>
+              <div class="faq-card-q">Do you offer branded cups with my company logo?</div>
+              <div class="faq-card-a">
+                Absolutely! <strong>You can fully customise your EcoCup</strong> with your company logo, brand colours, and custom messaging — directly printed or engraved on the bottle using eco-friendly ink. It is a great way to show your organisation's commitment to sustainability while promoting your brand. Contact us through the form below or email us to discuss minimum quantities, design options, and pricing.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q7: Long Life for outdoors -->
+          <div class="faq-card">
+            <div class="faq-card-inner">
+              <div class="faq-card-icon" style="background:#EAF3DE;">🏔️</div>
+              <div class="faq-card-cat">Long Life Bottle · Outdoor Adventures</div>
+              <div class="faq-card-q">Is the Long Life bottle strong enough for hiking and outdoor adventures in the desert or wadis?</div>
+              <div class="faq-card-a">
+                Yes — the <strong>Long Life Bottle</strong> is our most rugged and durable model. It is built with a <strong>multi-layer palm fibre core</strong> reinforced with compressed plant materials, making it resistant to bumps, drops, and rough terrain. The premium eco-coating protects against moisture and desert heat. Whether you are hiking through <strong>Wadi Shab, Wadi Bani Khalid</strong>, or exploring the dunes of Wahiba Sands, the Long Life Bottle is your ideal sustainable outdoor companion.
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end faq-track -->
+      </div><!-- end faq-track-outer -->
+
+      <!-- Navigation -->
+      <div class="faq-nav">
+        <button class="faq-arrow" id="faqPrev" onclick="faqNav(-1)" disabled>&#8592;</button>
+        <div class="faq-dots" id="faqDots"></div>
+        <button class="faq-arrow" id="faqNext" onclick="faqNav(1)">&#8594;</button>
+      </div>
+      <div class="faq-counter" id="faqCounter">1 / 7</div>
+    </div>
+  </section>
+
+<!-- B2B PARTNERS SECTION -->
+  <section class="b2b-section" id="sec-b2b">
+    <div class="b2b-inner">
+
+      <!-- Header -->
+      <div class="b2b-eyebrow">🤝 B2B &amp; Partnership Mission</div>
+      <h1 class="b2b-headline">We don't just deliver sustainable packaging.<br><span>We deliver the data that proves you're part of the solution.</span></h1>
+      <p class="b2b-lead">EcoCup was built to change habits at scale — from hotel lobbies and corporate offices to government canteens across Oman. Our mission extends beyond the individual consumer to the organisations shaping our country's future.</p>
+
+      <!-- Three pillar cards -->
+      <div class="b2b-cards">
+        <div class="b2b-card card-1">
+          <span class="b2b-card-icon">📊</span>
+          <div class="b2b-card-tag">Concise &amp; Verified</div>
+          <h3>Sustainability Claims Require Proof, Not Promises.</h3>
+          <p>Every hotel, business office, and government organization we work with receives a <strong>White-Label Impact Report</strong> — a quarterly record that certifies the precise number of plastic bottles removed and the weight of garbage diverted from Omani landfills. This isn't a projection. It's a data-driven, co-branded asset.</p>
+        </div>
+        <div class="b2b-card card-2">
+          <span class="b2b-card-icon">🌐</span>
+          <div class="b2b-card-tag">Inspiring &amp; Scalable</div>
+          <h3>The Plastic Accountability Initiative</h3>
+          <p>From a luxury resort in Dhofar to a public sector office in Muscat — we track and verify every bottle replaced. Through co-branded quarterly reports, partners can confidently state: <strong>"We saved [X] kg of plastic this year, equivalent to protecting [Y] km of Omani coastline."</strong></p>
+        </div>
+        <div class="b2b-card card-3">
+          <span class="b2b-card-icon">🏛️</span>
+          <div class="b2b-card-tag">Formal &amp; Data-Driven</div>
+          <h3>Data-Driven Decarbonization for Oman</h3>
+          <p>In alignment with <strong>UN SDGs 12 &amp; 13</strong>, EcoCup commits to the White-Label Impact Reporting Standard — a certified, real-time audit of plastic reduction for every hotel corridor, corporate pantry, and government office we serve.</p>
+        </div>
+      </div>
+
+      <!-- Impact report detail block -->
+      <div class="b2b-report-block">
+        <div class="b2b-report-left">
+          <h2>Your Quarterly <span>White-Label Impact Report</span> — Included with Every Partnership</h2>
+          <p>We will not just deliver sustainable packaging. We will deliver the verified metrics your organisation needs to lead Oman's environmental transition and contribute meaningfully to <strong>Vision 2040</strong> environmental goals — with the numbers to back it up.</p>
+          <div class="b2b-quote">"This data is not just a report — it is your sustainability licence to operate, and a testament to the change Oman is making, one cup at a time."</div>
+        </div>
+        <div class="b2b-report-right">
+          <div class="b2b-metric">
+            <div class="b2b-metric-icon">♻️</div>
+            <div>
+              <div class="b2b-metric-num">Verified Units</div>
+              <div class="b2b-metric-lbl">Precise count of plastic bottles your organisation kept out of circulation — calculated from your exact order &amp; return data</div>
+            </div>
+          </div>
+          <div class="b2b-metric">
+            <div class="b2b-metric-icon">⚖️</div>
+            <div>
+              <div class="b2b-metric-num">Waste Diversion (kg)</div>
+              <div class="b2b-metric-lbl">The equivalent mass of material not sent to Omani landfills — ready for your ESG reporting</div>
+            </div>
+          </div>
+          <div class="b2b-metric">
+            <div class="b2b-metric-icon">🌍</div>
+            <div>
+              <div class="b2b-metric-num">CO₂ Equivalency</div>
+              <div class="b2b-metric-lbl">The greenhouse gas emissions avoided through your organisation's choice to switch to EcoCup</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SDG alignment + pledge -->
+      <div class="b2b-bottom">
+        <div class="b2b-sdg-box">
+          <h4>🎯 UN SDG Alignment</h4>
+          <div class="b2b-sdg-pills">
+            <span class="b2b-sdg-pill">SDG 12 · Responsible Consumption</span>
+            <span class="b2b-sdg-pill">SDG 13 · Climate Action</span>
+          </div>
+          <p>EcoCup's B2B reporting framework directly supports your organisation's contribution to the United Nations Sustainable Development Goals. Our White-Label Impact Reports are structured to integrate seamlessly into your ESG disclosures and annual sustainability statements — giving your board the credibility that empty claims simply cannot.</p>
+        </div>
+        <div class="b2b-pledge-box">
+          <div>
+            <h4>✅ Our Pledge to Every Partner</h4>
+            <div class="b2b-pledge-list">
+              <div class="b2b-pledge-item"><span class="b2b-pledge-check">✔</span>Track the real number of plastic bottles saved within your operations</div>
+              <div class="b2b-pledge-item"><span class="b2b-pledge-check">✔</span>Deliver co-branded quarterly impact reports — at no extra cost</div>
+              <div class="b2b-pledge-item"><span class="b2b-pledge-check">✔</span>Support your ESG reporting with certified, auditable data</div>
+              <div class="b2b-pledge-item"><span class="b2b-pledge-check">✔</span>Transform your procurement decision into a documented, verifiable environmental act</div>
+              <div class="b2b-pledge-item"><span class="b2b-pledge-check">✔</span>Align your brand with Oman's Vision 2040 environmental commitments</div>
+            </div>
+          </div>
+          <button class="b2b-cta" onclick="showPage('page-home');setTimeout(()=>document.getElementById('sec-contact')&&document.getElementById('sec-contact').scrollIntoView({behavior:'smooth'}),200)">
+            🤝 Become a Partner &rarr;
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+    <section class="contact-bg" id="sec-contact">
+    <div class="contact-inner">
+      <div class="section-label">Contact</div>
+      <h2>Get in touch</h2>
+      <p>Interested in our products, bulk orders, or a partnership? Reach out and we&apos;ll get back to you.</p>
+      <div class="form-group"><input type="text" id="contact-name" placeholder="Your name"/></div>
+      <div class="form-group"><input type="email" id="contact-email" placeholder="Email address"/></div>
+      <div class="form-group"><input type="text" id="contact-subject" placeholder="Subject (individual / business / government)"/></div>
+      <div class="form-group"><textarea id="contact-message" placeholder="Your message..."></textarea></div>
+      <button class="submit-btn" onclick="sendContactEmail()">Send Message</button>
+      <p style="margin-top:16px;font-size:13px;color:#639922;text-align:center;">
+        Or email us directly at <a href="mailto:ecocupoman@gmail.com" style="color:#3B6D11;font-weight:600;">ecocupoman@gmail.com</a>
+      </p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <img src="images/logo.png" alt="EcoCup"/>
+      <div><div class="footer-name">EcoCup &mdash; Oman</div><div class="footer-sub">Reducing plastic, one bottle at a time.</div></div>
+    </div>
+    <div class="footer-links"><a>Instagram</a><a>LinkedIn</a><a>Privacy</a></div>
+  </footer>
+</div>
+
+<!-- PRODUCTS PAGE -->
+<div class="page" id="page-products">
+  <div class="products-page">
+    <div class="page-header">
+      <div class="label">Our Collection</div>
+      <h1>Choose your bottle type</h1>
+      <p>Scroll through each bottle type to find the perfect size. Pick individual bottles or organization packs.</p>
+    </div>
+
+    <!-- MODE TOGGLE -->
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="mode-individual" onclick="setMode('individual')">&#128100; Individual</button>
+      <button class="mode-btn" id="mode-org" onclick="setMode('org')">&#127970; For Organizations</button>
+    </div>
+
+    <!-- TYPE 1: Nature Return (Single Use) -->
+    <div class="type-section" id="sec-single">
+      <div class="type-section-header">
+        <div>
+          <span class="type-badge badge-single">&#127807; Single Use</span>
+          <h2 class="type-section-title">Nature Return Bottle</h2>
+          <p class="type-section-sub">Use it, then give it back to the earth. Plant-based materials that decompose and enrich soil naturally.</p>
+        </div>
+        <div class="scroll-hint">&#8592; scroll to choose size &#8594;</div>
+      </div>
+      <div class="bottle-scroll-track" id="scroll-single">
+        <div class="bottle-scroll-inner">
+          <div class="bottle-scroll-card" id="single-0" onclick="selectBottleCard('single',0)">
+            <div class="bcard-img-wrap"><img src="images/products/single-350ml.jpg" alt="Single Use 350ml"/></div>
+            <div class="bcard-info">
+              <div class="bcard-size">350 ml</div>
+              <div class="bcard-name">Nature Return</div>
+              <div class="bcard-price">OMR 0.075</div>
+              <div class="bcard-fill-row" id="single-fill-0">
+                <div class="fill-chip active" onclick="event.stopPropagation();setBFill('single',0,'water')">&#128166; Filled</div>
+                <div class="fill-chip" onclick="event.stopPropagation();setBFill('single',0,'empty')">&#129337; Empty</div>
+              </div>
+              <button class="bcard-add" onclick="event.stopPropagation();addBottleCardToCart('single',0)">Add to Cart</button>
+            </div>
+          </div>
+          <div class="bottle-scroll-card" id="single-1" onclick="selectBottleCard('single',1)">
+            <div class="bcard-img-wrap"><img src="images/products/single-500ml.png" alt="Single Use 500ml"/></div>
+            <div class="bcard-info">
+              <div class="bcard-size">500 ml</div>
+              <div class="bcard-name">Nature Return</div>
+              <div class="bcard-price">OMR 0.100</div>
+              <div class="bcard-fill-row" id="single-fill-1">
+                <div class="fill-chip active" onclick="event.stopPropagation();setBFill('single',1,'water')">&#128166; Filled</div>
+                <div class="fill-chip" onclick="event.stopPropagation();setBFill('single',1,'empty')">&#129337; Empty</div>
+              </div>
+              <button class="bcard-add" onclick="event.stopPropagation();addBottleCardToCart('single',1)">Add to Cart</button>
+            </div>
+          </div>
+          <div class="bottle-scroll-card" id="single-2" onclick="selectBottleCard('single',2)">
+            <div class="bcard-img-wrap"><img src="images/products/single-1L.png" alt="Single Use 1L"/></div>
+            <div class="bcard-info">
+              <div class="bcard-size">1 L</div>
+              <div class="bcard-name">Nature Return</div>
+              <div class="bcard-price">OMR 0.145</div>
+              <div class="bcard-fill-row" id="single-fill-2">
+                <div class="fill-chip active" onclick="event.stopPropagation();setBFill('single',2,'water')">&#128166; Filled</div>
+                <div class="fill-chip" onclick="event.stopPropagation();setBFill('single',2,'empty')">&#129337; Empty</div>
+              </div>
+              <button class="bcard-add" onclick="event.stopPropagation();addBottleCardToCart('single',2)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Org pack row for single -->
+      <div class="org-pack-row" id="org-single" style="display:none;">
+        <div class="org-pack-header">&#127970; Organization Packs &mdash; Nature Return Bottle</div>
+        <div class="org-scroll-track">
+          <div class="org-scroll-inner">
+            <div class="org-scroll-card" onclick="addOrgPackFull('single',0,'8','0.540')">
+              <div class="org-card-img"><img src="images/org-packs/single-pack8.jpg" alt="Pack of 8"/></div>
+              <div class="org-card-body">
+                <div class="org-card-qty">Pack of 8</div>
+                <div class="org-card-desc">Nature Return · 500ml · Filled</div>
+                <div class="org-card-price">OMR 0.540</div>
+                <div class="org-card-save">Save 10%</div>
+                <button class="org-card-btn">Add Pack to Cart</button>
+              </div>
+            </div>
+            <div class="org-scroll-card" onclick="addOrgPackFull('single',1,'16','0.984')">
+              <div class="org-card-img"><img src="images/org-packs/single-pack16.png" alt="Pack of 16"/></div>
+              <div class="org-card-body">
+                <div class="org-card-qty">Pack of 16</div>
+                <div class="org-card-desc">Nature Return · 500ml · Filled</div>
+                <div class="org-card-price">OMR 0.984</div>
+                <div class="org-card-save">Save 18%</div>
+                <button class="org-card-btn">Add Pack to Cart</button>
+              </div>
+            </div>
+            <div class="org-scroll-card" onclick="addOrgPackFull('single',2,'32','1.728')">
+              <div class="org-card-img"><img src="images/org-packs/single-pack32.jpg" alt="Pack of 32"/></div>
+              <div class="org-card-body">
+                <div class="org-card-qty">Pack of 32</div>
+                <div class="org-card-desc">Nature Return · 500ml · Filled</div>
+                <div class="org-card-price">OMR 1.728</div>
+                <div class="org-card-save">Save 28%</div>
+                <button class="org-card-btn">Add Pack to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TYPE 2: Recycle & Return -->
+    <div class="type-section" id="sec-recycle">
+      <div class="type-section-header">
+        <div>
+          <span class="type-badge badge-recycle">&#9851; Recyclable</span>
+          <h2 class="type-section-title">Recycle &amp; Return Bottle</h2>
+          <p class="type-section-sub">Use it multiple times, then bring it back. Return for a discount on your next order.</p>
+        </div>
+        <div class="scroll-hint">&#8592; scroll to choose size &#8594;</div>
+      </div>
+      <div class="bottle-scroll-track" id="scroll-recycle">
+        <div class="bottle-scroll-inner">
+          <div class="bottle-scroll-card" id="recycle-0" onclick="selectBottleCard('recycle',0)">
+            <div class="bcard-img-wrap"><img src="images/products/recycle-250ml.png" alt="Recycle 250ml"/></div>
+            <div class="bcard-info">
+              <div class="bcard-size">250 ml</div>
+              <div class="bcard-name">Recycle &amp; Return</div>
+              <div class="bcard-price">OMR 0.050</div>
+              <div class="bcard-fill-row" id="recycle-fill-0">
+                <div class="fill-chip active" onclick="event.stopPropagation();setBFill('recycle',0,'water')">&#128166; Filled</div>
+                <div class="fill-chip" onclick="event.stopPropagation();setBFill('recycle',0,'empty')">&#129337; Empty</div>
+              </div>
+              <button class="bcard-add" onclick="event.stopPropagation();addBottleCardToCart('recycle',0)">Add to Cart</button>
+            </div>
+          </div>
+          <div class="bottle-scroll-card" id="recycle-1" onclick="selectBottleCard('recycle',1)">
+            <div class="bcard-img-wrap"><img src="images/products/recycle-500ml.png" alt="Recycle 500ml"/></div>
+            <div class="bcard-info">
+              <div class="bcard-size">500 ml</div>
+              <div class="bcard-name">Recycle &amp; Return</div>
+              <div class="bcard-price">OMR 0.085</div>
+              <div class="bcard-fill-row" id="recycle-fill-1">
+                <div class="fill-chip active" onclick="event.stopPropagation();setBFill('recycle',1,'water')">&#128166; Filled</div>
+                <div class="fill-chip" onclick="event.stopPropagation();setBFill('recycle',1,'empty')">&#129337; Empty</div>
+              </div>
+              <button class="bcard-add" onclick="event.stopPropagation();addBottleCardToCart('recycle',1)">Add to Cart</button>
+            </div>
+          </div>
+          <div class="bottle-scroll-card" id="recycle-2" onclick="selectBottleCard('recycle',2)">
+            <div class="bcard-img-wrap"><img src="images/products/recycle-800ml.png" alt="Recycle 800ml"/></div>
+            <div class="bcard-info">
+              <div class="bcard-size">800 ml</div>
+              <div class="bcard-name">Recycle &amp; Return</div>
+              <div class="bcard-price">OMR 0.097</div>
+              <div class="bcard-fill-row" id="recycle-fill-2">
+                <div class="fill-chip active" onclick="event.stopPropagation();setBFill('recycle',2,'water')">&#128166; Filled</div>
+                <div class="fill-chip" onclick="event.stopPropagation();setBFill('recycle',2,'empty')">&#129337; Empty</div>
+              </div>
+              <button class="bcard-add" onclick="event.stopPropagation();addBottleCardToCart('recycle',2)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Org pack row for recycle -->
+      <div class="org-pack-row" id="org-recycle" style="display:none;">
+        <div class="org-pack-header">&#127970; Organization Packs &mdash; Recycle &amp; Return Bottle</div>
+        <div class="org-scroll-track">
+          <div class="org-scroll-inner">
+            <div class="org-scroll-card" onclick="addOrgPackFull('recycle',0,'8','0.360')">
+              <div class="org-card-img"><img src="images/org-packs/recycle-pack8.jpg" alt="Recycle Pack of 8"/></div>
+              <div class="org-card-body">
+                <div class="org-card-qty">Pack of 8</div>
+                <div class="org-card-desc">Recycle &amp; Return · 500ml · Filled</div>
+                <div class="org-card-price">OMR 0.360</div>
+                <div class="org-card-save">Save 10%</div>
+                <button class="org-card-btn">Add Pack to Cart</button>
+              </div>
+            </div>
+            <div class="org-scroll-card" onclick="addOrgPackFull('recycle',1,'16','0.656')">
+              <div class="org-card-img"><img src="images/org-packs/recycle-pack16.png" alt="Recycle Pack of 16"/></div>
+              <div class="org-card-body">
+                <div class="org-card-qty">Pack of 16</div>
+                <div class="org-card-desc">Recycle &amp; Return · 500ml · Filled</div>
+                <div class="org-card-price">OMR 0.656</div>
+                <div class="org-card-save">Save 18%</div>
+                <button class="org-card-btn">Add Pack to Cart</button>
+              </div>
+            </div>
+            <div class="org-scroll-card" onclick="addOrgPackFull('recycle',2,'32','1.152')">
+              <div class="org-card-img"><img src="images/org-packs/recycle-pack32.jpg" alt="Recycle Pack of 32"/></div>
+              <div class="org-card-body">
+                <div class="org-card-qty">Pack of 32</div>
+                <div class="org-card-desc">Recycle &amp; Return · 500ml · Filled</div>
+                <div class="org-card-price">OMR 1.152</div>
+                <div class="org-card-save">Save 28%</div>
+                <button class="org-card-btn">Add Pack to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TYPE 3: Long Life -->
+    <div class="type-section" id="sec-longlife">
+      <div class="type-section-header">
+        <div>
+          <span class="type-badge badge-longlife">&#11088; Premium</span>
+          <h2 class="type-section-title">Long Life Bottle</h2>
+          <p class="type-section-sub">Built to last. Our most advanced bottle with premium natural materials for lifelong use.</p>
+        </div>
+        <div class="scroll-hint">&#8592; scroll to choose size &#8594;</div>
+      </div>
+      <div class="bottle-scroll-track" id="scroll-longlife">
+        <div class="bottle-scroll-inner">
+          <div class="bottle-scroll-card" id="longlife-0" onclick="selectBottleCard('longlife',0)">
+            <div class="bcard-img-wrap"><img src="images/products/longlife-350ml.jpg" alt="Long Life 350ml"/></div>
+            <div class="bcard-info">
+              <div class="bcard-size">350 ml</div>
+              <div class="bcard-name">Long Life</div>
+              <div class="bcard-price">OMR 0.190</div>
+              <div class="bcard-fill-row" id="longlife-fill-0">
+                <div class="fill-chip active" onclick="event.stopPropagation();setBFill('longlife',0,'water')">&#128166; Filled</div>
+                <div class="fill-chip" onclick="event.stopPropagation();setBFill('longlife',0,'empty')">&#129337; Empty</div>
+              </div>
+              <button class="bcard-add" onclick="event.stopPropagation();addBottleCardToCart('longlife',0)">Add to Cart</button>
+            </div>
+          </div>
+          <div class="bottle-scroll-card" id="longlife-1" onclick="selectBottleCard('longlife',1)">
+            <div class="bcard-img-wrap"><img src="images/products/longlife-500ml.jpg" alt="Long Life 500ml"/></div>
+            <div class="bcard-info">
+              <div class="bcard-size">500 ml</div>
+              <div class="bcard-name">Long Life</div>
+              <div class="bcard-price">OMR 0.200</div>
+              <div class="bcard-fill-row" id="longlife-fill-1">
+                <div class="fill-chip active" onclick="event.stopPropagation();setBFill('longlife',1,'water')">&#128166; Filled</div>
+                <div class="fill-chip" onclick="event.stopPropagation();setBFill('longlife',1,'empty')">&#129337; Empty</div>
+              </div>
+              <button class="bcard-add" onclick="event.stopPropagation();addBottleCardToCart('longlife',1)">Add to Cart</button>
+            </div>
+          </div>
+          <div class="bottle-scroll-card" id="longlife-2" onclick="selectBottleCard('longlife',2)">
+            <div class="bcard-img-wrap"><img src="images/products/longlife-950ml.jpg" alt="Long Life 950ml"/></div>
+            <div class="bcard-info">
+              <div class="bcard-size">950 ml</div>
+              <div class="bcard-name">Long Life</div>
+              <div class="bcard-price">OMR 0.325</div>
+              <div class="bcard-fill-row" id="longlife-fill-2">
+                <div class="fill-chip active" onclick="event.stopPropagation();setBFill('longlife',2,'water')">&#128166; Filled</div>
+                <div class="fill-chip" onclick="event.stopPropagation();setBFill('longlife',2,'empty')">&#129337; Empty</div>
+              </div>
+              <button class="bcard-add" onclick="event.stopPropagation();addBottleCardToCart('longlife',2)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Org pack row for longlife -->
+      <div class="org-pack-row" id="org-longlife" style="display:none;">
+        <div class="org-pack-header">&#127970; Organization Packs &mdash; Long Life Bottle</div>
+        <div class="org-scroll-track">
+          <div class="org-scroll-inner">
+            <div class="org-scroll-card" onclick="addOrgPackFull('longlife',0,'16','1.368')">
+              <div class="org-card-img"><img src="images/org-packs/longlife-pack-350.jpg" alt="Long Life 350ml x16"/></div>
+              <div class="org-card-body">
+                <div class="org-card-qty">Pack of 16</div>
+                <div class="org-card-desc">Long Life &middot; 350ml &middot; Filled</div>
+                <div class="org-card-price">OMR 1.368</div>
+                <div class="org-card-save">Save 18%</div>
+                <button class="org-card-btn">Add Pack to Cart</button>
+              </div>
+            </div>
+            <div class="org-scroll-card" onclick="addOrgPackFull('longlife',1,'16','2.624')">
+              <div class="org-card-img"><img src="images/org-packs/longlife-pack-500.jpg" alt="Long Life 500ml x16"/></div>
+              <div class="org-card-body">
+                <div class="org-card-qty">Pack of 16</div>
+                <div class="org-card-desc">Long Life &middot; 500ml &middot; Filled</div>
+                <div class="org-card-price">OMR 2.624</div>
+                <div class="org-card-save">Save 18%</div>
+                <button class="org-card-btn">Add Pack to Cart</button>
+              </div>
+            </div>
+            <div class="org-scroll-card" onclick="addOrgPackFull('longlife',2,'16','4.264')">
+              <div class="org-card-img"><img src="images/org-packs/longlife-pack-950.jpg" alt="Long Life 950ml x16"/></div>
+              <div class="org-card-body">
+                <div class="org-card-qty">Pack of 16</div>
+                <div class="org-card-desc">Long Life &middot; 950ml &middot; Filled</div>
+                <div class="org-card-price">OMR 4.264</div>
+                <div class="org-card-save">Save 18%</div>
+                <button class="org-card-btn">Add Pack to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CONFIGURATOR PAGE -->
+<div class="page" id="page-config">
+  <div class="config-page">
+    <button class="back-btn" onclick="showPage('page-products')">&#8592; Back to bottle types</button>
+    <div class="config-grid">
+      <div>
+        <div class="config-bottle-preview" id="config-preview-bg">
+          <div class="config-bottle-img" id="config-bottle-img"></div>
+          <div class="fill-indicator">
+            <span class="fill-dot filled" id="fill-dot"></span>
+            <span id="fill-label">Filled with water</span>
+          </div>
+        </div>
+        <div class="config-options">
+          <h3 id="config-type-title">Configure your bottle</h3>
+          <div class="option-group">
+            <div class="option-label">Size</div>
+            <div class="option-pills" id="size-pills"></div>
+          </div>
+          <div class="option-group">
+            <div class="option-label">Fill preference</div>
+            <div class="fill-toggle">
+              <div class="fill-opt active" id="fill-water" onclick="setFill('water')">
+                <span class="fill-icon">&#128166;</span>
+                <div class="fill-name">Filled with water</div>
+                <div class="fill-sub">Ready to drink</div>
+              </div>
+              <div class="fill-opt" id="fill-empty" onclick="setFill('empty')">
+                <span class="fill-icon">&#129337;</span>
+                <div class="fill-name">Empty bottle</div>
+                <div class="fill-sub">Fill it yourself</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="config-summary">
+          <h3>Your selection</h3>
+          <div class="summary-type" id="summary-type-box"></div>
+          <div id="summary-rows"></div>
+          <div class="summary-price"><span>Price</span><span class="price-val" id="config-price">OMR 0.000</span></div>
+          <button class="add-to-cart-btn" onclick="addConfigToCart()">Add to Cart &#128722;</button>
+          <div class="config-note" id="config-note"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CART PAGE -->
+<div class="page" id="page-cart">
+  <div class="cart-page">
+    <div class="cart-layout">
+      <div>
+        <div class="cart-title">Your Cart</div>
+        <div class="cart-sub" id="cart-sub-label"></div>
+        <div id="cart-items-list"></div>
+        <div class="empty-cart" id="empty-cart" style="display:none;">
+          <span class="empty-icon">&#128722;</span>
+          <p style="margin-bottom:16px;">Your cart is empty.</p>
+          <button style="background:#3B6D11;color:#EAF3DE;border:none;padding:12px 24px;border-radius:8px;font-size:15px;cursor:pointer;font-weight:500;" onclick="showPage('page-products')">Browse Bottles</button>
+        </div>
+      </div>
+      <div>
+        <div class="order-summary-box">
+          <h3>Order Summary</h3>
+          <div class="os-row"><span>Subtotal</span><span id="cart-subtotal">OMR 0.000</span></div>
+          <div class="os-row"><span>Shipping</span><span>Free</span></div>
+          <div class="os-row" id="discount-row" style="display:none;color:#3B6D11;"><span>Discount</span><span id="discount-val"></span></div>
+          <div class="promo-row"><input type="text" placeholder="Promo code" id="promo-input"/><button class="promo-btn" onclick="applyPromo()">Apply</button></div>
+          <div id="promo-msg" style="font-size:12px;margin:-4px 0 8px;"></div>
+          <div class="os-row total"><span>Total</span><span id="cart-total">OMR 0.000</span></div>
+          <button class="checkout-btn" id="checkout-btn" onclick="showPage('page-checkout');renderMiniCart();" disabled>Proceed to Checkout &#8594;</button>
+          <div class="eco-note">&#127807; Every order plants one tree in Oman.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT PAGE -->
+<div class="page" id="page-checkout">
+  <div class="checkout-page">
+    <div class="co-grid">
+      <div>
+        <div class="steps-bar">
+          <div class="s-item"><div class="s-dot done">&#10003;</div><span class="s-lbl">Cart</span></div>
+          <div class="s-line"></div>
+          <div class="s-item"><div class="s-dot active">2</div><span class="s-lbl active">Checkout</span></div>
+          <div class="s-line"></div>
+          <div class="s-item"><div class="s-dot pending">3</div><span class="s-lbl">Confirmation</span></div>
+        </div>
+        <div class="form-sec">
+          <h3>Delivery Information</h3>
+          <div class="frow"><div class="fg"><label>First name</label><input type="text" placeholder="Ahmed"/></div><div class="fg"><label>Last name</label><input type="text" placeholder="Al Rashdi"/></div></div>
+          <div class="frow full"><div class="fg"><label>Email</label><input type="email" placeholder="ahmed@example.com"/></div></div>
+          <div class="frow full"><div class="fg"><label>Phone</label><input type="tel" placeholder="+968 9X XXX XXX"/></div></div>
+          <div class="frow full"><div class="fg"><label>Address</label><input type="text" placeholder="Street, Building, Area"/></div></div>
+          <div class="frow"><div class="fg"><label>City</label><select><option>Muscat</option><option>Salalah</option><option>Sohar</option><option>Nizwa</option><option>Sur</option></select></div><div class="fg"><label>Governorate</label><select><option>Muscat</option><option>Dhofar</option><option>Al Batinah</option><option>Ad Dakhiliyah</option></select></div></div>
+        </div>
+        <div class="form-sec">
+          <h3>Payment Method</h3>
+          <div class="pay-opts">
+            <div class="pay-opt sel" onclick="selPay(this,'card')">&#128179; Card</div>
+            <div class="pay-opt" onclick="selPay(this,'cod')">&#128181; Cash</div>
+            <div class="pay-opt" onclick="selPay(this,'thawani')">&#128309; Thawani</div>
+          </div>
+          <div id="card-fields">
+            <div class="frow full"><div class="fg"><label>Cardholder name</label><input type="text" placeholder="Name on card"/></div></div>
+            <div class="frow full"><div class="fg"><label>Card number</label><input type="text" placeholder="1234 5678 9012 3456" maxlength="19" oninput="fmtCard(this)"/></div></div>
+            <div class="frow"><div class="fg"><label>Expiry</label><input type="text" placeholder="MM / YY" maxlength="7" oninput="fmtExp(this)"/></div><div class="fg"><label>CVV</label><input type="text" placeholder="&bull;&bull;&bull;" maxlength="3"/></div></div>
+          </div>
+          <div id="cod-fields" style="display:none;background:#f7f7f5;border-radius:8px;padding:12px;font-size:14px;color:#555;">Pay with cash on delivery. Available across Oman.</div>
+          <div id="thawani-fields" style="display:none;background:#EAF3DE;border-radius:8px;padding:12px;font-size:14px;color:#3B6D11;">You&apos;ll be redirected to Thawani Pay to complete securely.</div>
+        </div>
+      </div>
+      <div>
+        <div class="mini-cart-box">
+          <h3>Your Order</h3>
+          <div id="mini-items"></div>
+          <hr style="border:none;border-top:0.5px solid #ddd;margin:12px 0;">
+          <div style="display:flex;justify-content:space-between;font-size:13px;color:#555;margin-bottom:5px;"><span>Subtotal</span><span id="co-sub"></span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;color:#555;margin-bottom:5px;"><span>Shipping</span><span>Free</span></div>
+          <hr style="border:none;border-top:0.5px solid #ddd;margin:10px 0;">
+          <div style="display:flex;justify-content:space-between;font-size:16px;font-weight:500;"><span>Total</span><span id="co-total" style="color:#3B6D11;"></span></div>
+          <button class="place-btn" onclick="placeOrder()">Place Order &#8594;</button>
+          <div class="secure-note">
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 1L2 3v4c0 3 2.5 5 5 6 2.5-1 5-3 5-6V3L7 1z" stroke="#639922" stroke-width="1.2" fill="#EAF3DE"/></svg>
+            Secure &amp; encrypted
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS PAGE -->
+<div class="page" id="page-success">
+  <div class="success-page">
+    <div class="s-icon">&#10003;</div>
+    <h2 style="font-size:26px;font-weight:500;margin-bottom:10px;color:#173404;">Order confirmed!</h2>
+    <p style="font-size:15px;color:#555;margin-bottom:20px;line-height:1.7;">Thank you for choosing EcoCup. Your order has been placed and you&apos;ll receive a confirmation shortly.</p>
+    <div id="order-ref" style="background:#EAF3DE;border-radius:8px;padding:12px 22px;display:inline-block;font-size:15px;color:#3B6D11;font-weight:500;margin-bottom:22px;"></div>
+    <div style="background:#f7f7f5;border-radius:12px;border:0.5px solid #ddd;padding:16px;margin-bottom:24px;text-align:left;">
+      <div style="font-size:13px;font-weight:500;margin-bottom:6px;">Estimated Delivery</div>
+      <div style="font-size:13px;color:#555;">3&ndash;5 business days &middot; Free shipping across Oman</div>
+      <div style="display:flex;align-items:center;gap:8px;background:#EAF3DE;border-radius:8px;padding:9px 12px;margin-top:10px;font-size:12px;color:#3B6D11;">&#127807; A tree will be planted in Oman in honor of your order.</div>
+    </div>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button style="background:#3B6D11;color:#EAF3DE;border:none;padding:12px 22px;border-radius:8px;font-size:15px;cursor:pointer;font-weight:500;" onclick="resetAll()">Continue Shopping</button>
+      <button style="background:transparent;color:#3B6D11;border:1.5px solid #3B6D11;padding:12px 22px;border-radius:8px;font-size:15px;cursor:pointer;">Track Order</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
